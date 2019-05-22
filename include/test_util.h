@@ -11,6 +11,13 @@ typedef unsigned int ValType;
 // for non-return usage
 #define SUCCESS 0
 
+
+struct Bucket{
+	bool valid;
+	KeyType key;
+	ValType value;
+};
+
 // for returning error status
 
 #endif
