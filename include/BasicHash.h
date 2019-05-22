@@ -1,6 +1,7 @@
 #ifndef _BASIC_HASH_H_
 #define _BASIC_HASH_H_
 
+#include <iostream>
 #include "test_util.h"
 
 class BasicHash{
@@ -12,6 +13,6 @@ class BasicHash{
 		virtual RC create();
 		virtual RC insert();
 		virtual RC search();
-		RC printHashMethod();
+		virtual RC printHashMethod();
 };
 #endif
