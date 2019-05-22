@@ -12,5 +12,6 @@ class BasicHash{
 		virtual RC create();
 		virtual RC insert();
 		virtual RC search();
+		RC printHashMethod();
 };
 #endif
