@@ -16,6 +16,7 @@ struct Bucket{
 	bool valid;
 	KeyType key;
 	ValType value;
+	Bucket* next;
 };
 
 // for returning error status
