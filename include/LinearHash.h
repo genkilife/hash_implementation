@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "test_util.h"
+#include "BasicHash.h"
 
 class LinearHash: public BasicHash{
 	public:
