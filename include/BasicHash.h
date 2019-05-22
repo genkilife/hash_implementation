@@ -3,10 +3,10 @@
 
 #include "test_util.h"
 
-class basicHash{
+class BasicHash{
 	public:
-		basicHash();
-		~basicHash();
+		BasicHash();
+		~BasicHash();
 	// hash function
 	public:
 		virtual RC create();
