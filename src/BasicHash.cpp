@@ -17,3 +17,9 @@ RC BasicHash::insert(){
 RC BasicHash::search(){
 	return SUCCESS;
 }
+
+RC BasicHash::printHashMethod(){
+	std::cout<<"Basic hash class is used!"<<std::endl;
+	return SUCCESS;
+}
+
