@@ -9,7 +9,7 @@ USER_DEFINED=
 
 # Comment the following line to disable command line interface (CLI).
 CPPFLAGS = -Wall -I$(INCLUDEROOT) -std=c++11 -g $(USER_DEFINED)
-LFLAGS   = -Wall -I$(INCLUDEROOT)
+LFLAGS   = -Wall -I$(INCLUDEROOT) -lm
 
 SRCDIR   = src
 OBJDIR   = obj
