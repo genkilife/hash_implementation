@@ -11,9 +11,14 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	@$(CXX) $(CPPFLAGS) -c $< -o $@
 	@echo "Compiled "$<"!"
 
-# binary dependencies
-test_basic_00:  $(OBJECTS) $(TESTDIR)/test_basic_00.cpp
+$(OBJDIR)/test_basicHash_01.o: $(TESTDIR)/test_basicHash_01.cpp $(INCLUDEROOT)/BasicHash.h
+	@$(CXX) $(CPPFLAGS) -c $< -o $@
+	@echo "Compiled "$<"!"
 
+# binary dependencies
+$(BINDIR)/test_basicHash_01: $(OBJDIR)/test_basicHash_01.o $(OBJECTS)
+	@$(CXX) $(OBJECTS) $(OBJDIR)/test_basicHash_01.o $(LFLAGS) -o $@
+	@echo "Link "$<"!"
 
 .PHONY: clean
 clean:

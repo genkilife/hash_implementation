@@ -9,11 +9,12 @@ USER_DEFINED=
 
 # Comment the following line to disable command line interface (CLI).
 CPPFLAGS = -Wall -I$(INCLUDEROOT) -std=c++11 -g $(USER_DEFINED)
-LFLAGS   = -Wall -I$(INCLUDEROOT) -lm
+LFLAGS   = -Wall -I$(INCLUDEROOT)
 
 SRCDIR   = src
 OBJDIR   = obj
 BINDIR   = bin
+TESTDIR  = test
 
 SOURCES  := $(wildcard $(SRCDIR)/*.cpp)
 INCLUDES := $(wildcard $(INCLUDEROOT)/*.h)
