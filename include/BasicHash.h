@@ -11,8 +11,9 @@ class BasicHash{
 	// hash function
 	public:
 		virtual RC create();
-		virtual RC insert();
-		virtual RC search();
+		virtual RC insert(KeyType, ValType);
+		virtual RC search(KeyType);
+		virtual RC delkey(KeyType);
 		virtual RC printHashMethod();
 };
 #endif

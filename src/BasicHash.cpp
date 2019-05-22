@@ -10,11 +10,15 @@ RC BasicHash::create(){
 	return SUCCESS;
 }
 
-RC BasicHash::insert(){
+RC BasicHash::insert(KeyType key, ValType val){
 	return SUCCESS;
 }
 
-RC BasicHash::search(){
+RC BasicHash::search(KeyType key){
+	return SUCCESS;
+}
+
+RC BasicHash::delkey(KeyType key){
 	return SUCCESS;
 }
 

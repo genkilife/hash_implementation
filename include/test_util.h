@@ -3,6 +3,9 @@
 
 typedef int RC;
 
+typedef int KeyType;
+typedef int ValType;
+
 // for non-return usage
 #define SUCCESS 0
 
