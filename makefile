@@ -22,5 +22,5 @@ $(BINDIR)/test_basicHash_01: $(OBJDIR)/test_basicHash_01.o $(OBJECTS)
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	@$(rm) $(OBJDIR)/*
 	@echo "Cleanup complete!"
