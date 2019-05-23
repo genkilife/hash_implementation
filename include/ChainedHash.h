@@ -17,6 +17,7 @@ class ChainedHash: public BasicHash{
 		RC search(KeyType);
 		RC delkey(KeyType);
 		RC printHashMethod();
+		bool isEmptyHash();
 	private:
 		Bucket* buckets;
 		unsigned int bucketSize;

@@ -15,5 +15,6 @@ class BasicHash{
 		virtual RC search(KeyType);
 		virtual RC delkey(KeyType);
 		virtual RC printHashMethod();
+		virtual bool isEmptyHash();
 };
 #endif

@@ -17,6 +17,7 @@ class DoubleHash: public BasicHash{
 		RC search(KeyType);
 		RC delkey(KeyType);
 		RC printHashMethod();
+		bool isEmptyHash();
 
 	private:
 		KeyType hashFunc0(KeyType);
