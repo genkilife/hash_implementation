@@ -19,6 +19,6 @@ struct Bucket{
 	Bucket* next;
 };
 
-// for returning error status
+RC genDistinctKeys(KeyType*, unsigned int);
 
 #endif
