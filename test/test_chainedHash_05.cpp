@@ -49,7 +49,7 @@ int main(){
 	
 	// Test deleteion
 	for(unsigned int idx=0; idx < keySize; idx++){
-		if(chPtr->delkey(keys[idx]) != SUCCESS){
+		if(chPtr->delkey(shuffledKeys[idx]) != SUCCESS){
 			assert(false);
 		}
 	}
