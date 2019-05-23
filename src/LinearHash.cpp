@@ -46,10 +46,7 @@ RC LinearHash::insert(KeyType key, ValType val){
 	KeyType hashedId = key % bucketSize;
 	
 	while(buckets[hashedId].valid == true){
-		hashedId++;
-		if(hashedId == bucketSize){
-			hashedId = 0;
-		}
+		hashedId = (hashedId+1) % bucketSize;
 	}
 	
 	// Insert on the selected ID
@@ -65,23 +62,12 @@ RC LinearHash::insert(KeyType key, ValType val){
 RC LinearHash::search(KeyType key){
 
 	KeyType hashedId = key % bucketSize;
-	KeyType keyId = hashedId;
 
 	while(buckets[hashedId].valid == true){
 		if(buckets[hashedId].key == key){
 			return SUCCESS;
 		}
-		
-		// If coninuous keys don't hash on the same key
-		KeyType bucketsId = buckets[hashedId].key % bucketSize;
-		if(bucketsId != keyId){
-			return -1;
-		}
-
-		hashedId++;
-		if(hashedId == bucketSize){
-			hashedId = 0;
-		}
+		hashedId = (hashedId+1) % bucketSize;
 	}
 
 	return -1;
@@ -91,37 +77,32 @@ RC LinearHash::delkey(KeyType key){
 	
 	KeyType hashedId = key % bucketSize;
 
-	KeyType keyId = hashedId;
-
 	while(buckets[hashedId].valid == true){
 		if(buckets[hashedId].valid == key){
 			break;
 		}
 
-		KeyType bucketsId = buckets[hashedId].key % bucketSize;
-		if(bucketsId != keyId){
-			// Can't find delete key
-			return -1;
-		}
-
-		hashedId++;
-		if(hashedId == bucketSize){
-			hashedId = 0;
-		}
+		hashedId = (hashedId+1) % bucketSize;
 	}
 	buckets[hashedId].valid = false;
 
 	KeyType preId = hashedId;
 	KeyType nxtId = (hashedId+1) % bucketSize;
-	while(buckets[nxtId].valid && 
-			(buckets[nxtId].key % bucketSize) == keyId
-		){
-		buckets[preId] = buckets[nxtId];
-		preId = nxtId;
-		nxtId++;
-		if(nxtId == bucketSize){
-			nxtId = 0;
+
+	while(buckets[nxtId].valid){ 
+		KeyType nexthashed = buckets[nxtId].key % bucketSize;
+		if(preId < nxtId){
+			if(nexthashed < (preId+1) || nexthashed >(nxtId)){
+				buckets[preId] = buckets[nxtId];
+				preId = nxtId;
+			}
+		} else{
+			if(nexthashed < (preId+1) && nexthashed >(nxtId)){
+				buckets[preId] = buckets[nxtId];
+				preId = nxtId;
+			}
 		}
+		nxtId = (nxtId+1) % bucketSize;
 	}
 	buckets[nxtId].valid = false;
 
