@@ -41,7 +41,7 @@ int main(){
 	
 	// Test deleteion
 	for(unsigned int idx=0; idx < keySize; idx++){
-		if(dhPtr->search(keys[idx]) != SUCCESS){
+		if(dhPtr->search(shuffledKeys[idx]) != SUCCESS){
 			cout<<"serach not found"<<endl;
 			assert(false);
 		}
