@@ -51,17 +51,18 @@ RC CuckooHash::insert(KeyType key, ValType val){
 	Bucket writeBucket = {.valid=true, .key=key, .value=val, .next=NULL};
 	bool isLookup0 = true;
 	unsigned int cnt=0;
+
 	while(writeBucket.valid == true){
 		if(isLookup0){
-			hashedId = hashFunc0(key);
+			hashedId = hashFunc0(writeBucket.key);
 			bucketswap(writeBucket, buckets0[hashedId]);
 		} else{
-			hashedId = hashFunc1(key);
+			hashedId = hashFunc1(writeBucket.key);
 			bucketswap(writeBucket, buckets1[hashedId]);
 		}
-		isLookup0 = !isLookup0;
+		isLookup0 = (isLookup0 == false);
 		cnt++;
-		if(cnt >= bucketSize){
+		if(cnt >= 2*bucketSize){
 			return -1;
 		}
 	}
