@@ -108,7 +108,7 @@ RC CuckooHash::delkey(KeyType key){
 }
 
 RC CuckooHash::printHashMethod(){
-	std::cout<<"Chained hash class is used!"<<std::endl;
+	std::cout<<"Cuckoo hash class is used!"<<std::endl;
 	return SUCCESS;
 }
 
