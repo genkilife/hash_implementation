@@ -50,7 +50,7 @@ RC ChainedHash::insert(KeyType key, ValType val){
 
 	Bucket* bucketPtr = &buckets[hashedId];
 	
-	while(bucketPtr->valid == true && bucketPtr->next != NULL){
+	while(bucketPtr->next != NULL){
 		bucketPtr = bucketPtr->next;
 	}
 
@@ -69,10 +69,10 @@ RC ChainedHash::insert(KeyType key, ValType val){
 RC ChainedHash::search(KeyType key){
 
 	KeyType hashedId = key % bucketSize;
-	Bucket* bucketPtr = &buckets[hashedId];
+	Bucket* bucketPtr = buckets[hashedId].next;
 
-	while(bucketPtr->valid == true){
-		if(bucketPtr->key == key){
+	while(bucketPtr!=NULL){
+		if(bucketPtr->valid == true && bucketPtr->key == key){
 			return SUCCESS;
 		}
 
@@ -92,16 +92,8 @@ RC ChainedHash::delkey(KeyType key){
 	Bucket* preBucketPtr = &buckets[hashedId];
 	Bucket* nxtBucketPtr = preBucketPtr->next;
 
-	if(nxtBucketPtr == NULL){
-		if(preBucketPtr->key == key){
-			preBucketPtr->valid = false;
-		} else{
-			return -1;
-		}
-	}
-	while(nxtBucketPtr!=NULL){
-
-		if(nxtBucketPtr->key == key){
+	while(nxtBucketPtr!= NULL){
+		if(nxtBucketPtr->valid == true && nxtBucketPtr->key == key){
 			// delete this node
 			preBucketPtr->next = nxtBucketPtr->next;
 			delete nxtBucketPtr;
