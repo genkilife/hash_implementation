@@ -57,6 +57,8 @@ RC LinearHash::insert(KeyType key, ValType val){
 	buckets[hashedId].key   = key;
 	buckets[hashedId].value = val;
 
+	keyNum++;
+
 	return SUCCESS;
 }
 

@@ -61,6 +61,8 @@ RC ChainedHash::insert(KeyType key, ValType val){
 	bucketPtr->key = key;
 	bucketPtr->value = val;
 	bucketPtr->next = NULL;
+
+	keyNum++;
 	return SUCCESS;
 }
 
@@ -103,6 +105,7 @@ RC ChainedHash::delkey(KeyType key){
 			// delete this node
 			preBucketPtr->next = nxtBucketPtr->next;
 			delete nxtBucketPtr;
+			keyNum--;
 			return SUCCESS;
 		}
 
