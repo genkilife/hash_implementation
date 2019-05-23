@@ -68,11 +68,13 @@ RC DoubleHash::search(KeyType key){
 		assert(hashedId1 < bucketSize);
 	#endif
 	
-	while(buckets[hashedId].valid){
+	unsigned int cnt=0;
+	while(cnt < bucketSize){
 		if(buckets[hashedId].key == key){
 			return SUCCESS;
 		}
 		hashedId = (hashedId + hashedId1) % bucketSize;
+		cnt++;
 	}
 
 	return -1;
@@ -88,13 +90,15 @@ RC DoubleHash::delkey(KeyType key){
 		assert(hashedId1 < bucketSize);
 	#endif
 
-	while(buckets[hashedId].valid){
-		if(buckets[hashedId].key == key){
+	unsigned int cnt=0;
+	while(cnt < bucketSize){
+		if(buckets[hashedId].valid && buckets[hashedId].key == key){
 			buckets[hashedId].valid = false;
 			keyNum--;
 			return SUCCESS;
 		}
 		hashedId = (hashedId + hashedId1) % bucketSize;
+		cnt++;
 	}
 
 	return -1;
