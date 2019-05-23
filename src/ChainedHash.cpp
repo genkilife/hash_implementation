@@ -120,3 +120,11 @@ RC ChainedHash::printHashMethod(){
 	return SUCCESS;
 }
 
+bool ChainedHash::isEmptyHash(){
+	for(unsigned int id=0; id < bucketSize; id++){
+		if(buckets[id].valid){
+			return false;
+		}
+	}
+	return true;
+}

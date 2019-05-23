@@ -116,3 +116,11 @@ RC LinearHash::printHashMethod(){
 	return SUCCESS;
 }
 
+bool LinearHash::isEmptyHash(){
+	for(unsigned int id=0; id < bucketSize; id++){
+		if(buckets[id].valid){
+			return false;
+		}
+	}
+	return true;
+}

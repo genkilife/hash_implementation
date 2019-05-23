@@ -130,3 +130,15 @@ RC CuckooHash::bucketswap(Bucket& a, Bucket& b){
 	b = tmp;
 	return SUCCESS;
 }
+
+bool CuckooHash::isEmptyHash(){
+	for(unsigned int id=0; id < bucketSize; id++){
+		if(buckets0[id].valid){
+			return false;
+		}
+		if(buckets1[id].valid){
+			return false;
+		}
+	}
+	return true;
+}

@@ -113,3 +113,11 @@ KeyType DoubleHash::hashFunc1(KeyType key){
 	return key % bucketSize;
 }
 
+bool DoubleHash::isEmptyHash(){
+	for(unsigned int id=0; id < bucketSize; id++){
+		if(buckets[id].valid){
+			return false;
+		}
+	}
+	return true;
+}

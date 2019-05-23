@@ -27,3 +27,6 @@ RC BasicHash::printHashMethod(){
 	return SUCCESS;
 }
 
+bool BasicHash::isEmptyHash(){
+	return true;
+}
