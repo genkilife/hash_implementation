@@ -78,13 +78,12 @@ RC LinearHash::delkey(KeyType key){
 	KeyType hashedId = key % bucketSize;
 
 	while(buckets[hashedId].valid == true){
-		if(buckets[hashedId].valid == key){
+		if(buckets[hashedId].key == key){
 			break;
 		}
 
 		hashedId = (hashedId+1) % bucketSize;
 	}
-	buckets[hashedId].valid = false;
 
 	KeyType preId = hashedId;
 	KeyType nxtId = (hashedId+1) % bucketSize;
@@ -104,7 +103,7 @@ RC LinearHash::delkey(KeyType key){
 		}
 		nxtId = (nxtId+1) % bucketSize;
 	}
-	buckets[nxtId].valid = false;
+	buckets[preId].valid = false;
 
 	keyNum--;
 
