@@ -41,8 +41,13 @@ RC DoubleHash::insert(KeyType key, ValType val){
 	KeyType hashedId  = hashFunc0(key);
 	KeyType hashedId1 = hashFunc1(key);
 
+	unsigned int cnt=0;
 	while(buckets[hashedId].valid == true){
 		hashedId = (hashedId + hashedId1) % bucketSize;
+		cnt++;
+		if(cnt >= bucketSize){
+			return -1;
+		}
 	}
 
 	buckets[hashedId].valid = true;
