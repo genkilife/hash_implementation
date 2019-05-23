@@ -16,7 +16,7 @@ RC genDistinctKeys(KeyType* keys, unsigned int keySize){
 
 	KeyType r;
 	while(cnt < keySize){
-		r = rand() % 0x40000000;
+		r = rand() % (MODPRIME*MODPRIME);
 		// Find r in keys
 		for(idx=0; idx < cnt; idx++){
 			if(r == keys[idx]){
