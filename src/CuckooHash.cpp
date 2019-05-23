@@ -65,6 +65,7 @@ RC CuckooHash::insert(KeyType key, ValType val){
 			return -1;
 		}
 	}
+	keyNum++;
 	return SUCCESS;
 }
 
@@ -97,10 +98,12 @@ RC CuckooHash::delkey(KeyType key){
 	#endif
 	if(	 buckets0[hashedId0].valid && buckets0[hashedId0].key == key){
 		buckets0[hashedId0].valid = false;
+		keyNum--;
 		return SUCCESS;
 	}
     if(buckets1[hashedId1].valid && buckets1[hashedId1].key == key){
 		buckets1[hashedId1].valid = false;
+		keyNum--;
 		return SUCCESS;
 	}
 
