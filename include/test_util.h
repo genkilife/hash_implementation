@@ -11,7 +11,7 @@ typedef unsigned int ValType;
 // for non-return usage
 #define SUCCESS 0
 
-#define SAMPLE_PERIOD 100
+#define SAMPLE_PERIOD 200
 
 struct Bucket{
 	bool valid;
