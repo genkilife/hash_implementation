@@ -57,6 +57,8 @@ int main(){
 				}
 				elapsed = chrono::high_resolution_clock::now() - start;
 				msecSearch[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
+
+				start = chrono::high_resolution_clock::now();
 			}
 		}
 	}
