@@ -36,7 +36,6 @@ def dump_performance(filename):
 	plt.plot(doubleXasis, doubleYasis, '-', color='#1f77b4ff')
 	plt.legend(['linear hashing', 'chained hashing', 'cuckoo hashing', 'double hashing'], loc='upper left')
 	plt.savefig(filename[0])
-	plt.show()
 
 uniform_insert = ['uniform_insert.png', 'result/linearHash_uniform_insert_timestamp.txt', 'result/chainedHash_uniform_insert_timestamp.txt',
 					'result/cuckooHash_uniform_insert_timestamp.txt', 'result/doubleHash_uniform_insert_timestamp.txt']
