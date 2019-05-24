@@ -109,7 +109,7 @@ int main(){
 	/*
 		Dump into result file.
 	*/
-	fs.open("result/linearHash_uniform_delete_timestamp.txt", fstream::out);
+	fs.open("result/chainedHash_uniform_delete_timestamp.txt", fstream::out);
 	for(unsigned int idx=0; idx < keySize/SAMPLE_PERIOD; idx++){
 		fs << (keySize - idx*SAMPLE_PERIOD) << " " << msecDelete[idx] << endl;
 	}
