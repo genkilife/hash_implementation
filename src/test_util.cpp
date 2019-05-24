@@ -30,3 +30,25 @@ RC genDistinctKeys(KeyType* keys, unsigned int keySize){
 
 	return SUCCESS;
 }
+
+RC genCollideKeys(KeyType* keys, unsigned int keySize){
+	srand(0);
+	unsigned int cnt = 0;
+	unsigned int idx;
+
+	KeyType r;
+	while(cnt < keySize){
+		r = rand() % (MODPRIME*MODPRIME);
+		// Find r in keys
+		for(idx=0; idx < cnt; idx++){
+			if(r == keys[idx]){
+				break;
+			}
+		}
+		if(idx == cnt){
+			keys[cnt++] = r;
+		}
+	}
+
+	return SUCCESS;
+}
