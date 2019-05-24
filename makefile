@@ -1,7 +1,17 @@
 include makefile.inc
 
-all: basicHash.o
+all: bin/test_chainedHash_06 bin/test_linearHash_06 bin/test_cuckooHash_06 bin/test_doubleHash_06 bin/test_chainedHash_07 bin/test_linearHash_07 bin/test_cuckooHash_07 bin/test_doubleHash_07
 
+run:
+	./bin/test_chainedHash_06
+	./bin/test_linearHash_06
+	./bin/test_cuckooHash_06
+	./bin/test_doubleHash_06
+run_collide:
+	./bin/test_chainedHash_07
+	./bin/test_linearHash_07
+	./bin/test_cuckooHash_07
+	./bin/test_doubleHash_07
 #$(BINDIR)/$(TARGET): $(OBJECTS)
 #    @$(LINKER) $(OBJECTS) $(LFLAGS) -o $@
 #    @echo "Linking complete!"
