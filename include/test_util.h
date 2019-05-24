@@ -11,7 +11,7 @@ typedef unsigned int ValType;
 // for non-return usage
 #define SUCCESS 0
 
-#define SAMPLE_PERIOD 200
+#define SAMPLE_PERIOD 300
 
 struct Bucket{
 	bool valid;
@@ -21,5 +21,6 @@ struct Bucket{
 };
 
 RC genDistinctKeys(KeyType*, unsigned int);
+RC genCollideKeys(KeyType*, unsigned int);
 
 #endif
