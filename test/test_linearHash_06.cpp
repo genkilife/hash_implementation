@@ -36,6 +36,8 @@ int main(){
 	auto start = chrono::high_resolution_clock::now();
 
 	long long *msecInsert = new long long[(keySize/SAMPLE_PERIOD) + 1];
+	long long *msecSearch = new long long[(keySize/SAMPLE_PERIOD) + 1];
+	msecSearch[0] = 0;
 
 
 	for(unsigned int idx=0; idx < keySize; idx++){
@@ -43,9 +45,19 @@ int main(){
 			assert(false);
 		}
 		if((idx % SAMPLE_PERIOD) == 0){
+			// Calcualte execution time of insert
 			auto elapsed = chrono::high_resolution_clock::now() - start;
 			msecInsert[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
-			start += elapsed;
+			if(idx > 0){
+				start = chrono::high_resolution_clock::now();
+				for(unsigned iidx=idx-SAMPLE_PERIOD; iidx < idx; iidx++){
+					if(lhPtr->search(keys[iidx]) != SUCCESS){
+						assert(false);
+					}
+				}
+				elapsed = chrono::high_resolution_clock::now() - start;
+				msecSearch[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
+			}
 		}
 	}
 	/*
@@ -54,12 +66,18 @@ int main(){
 	fstream fs;
 	fs.open("result/linearHash_uniform_insert_timestamp.txt", fstream::out);
 	for(unsigned int idx=0; idx < keySize/SAMPLE_PERIOD; idx++){
-		cout << idx*SAMPLE_PERIOD << " " << msecInsert[idx] << endl;
 		fs << idx*SAMPLE_PERIOD << " " << msecInsert[idx] << endl;
 	}
 	fs.close();
 	cout<<"Finish linear hash insertion "<<keySize <<" elements"<<endl;
 
+	fs.open("result/linearHash_uniform_search_timestamp.txt", fstream::out);
+	for(unsigned int idx=0; idx < keySize/SAMPLE_PERIOD; idx++){
+		fs << idx*SAMPLE_PERIOD << " " << msecSearch[idx] << endl;
+	}
+	fs.close();
+
+	cout<<"Finish linear hash insertion "<<keySize <<" elements"<<endl;
 	vector<KeyType> shuffledKeys_v(keys, keys+keySize);
 	random_shuffle(shuffledKeys_v.begin(), shuffledKeys_v.end());
 
