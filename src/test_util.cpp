@@ -38,7 +38,7 @@ RC genCollideKeys(KeyType* keys, unsigned int keySize){
 
 	KeyType r;
 	while(cnt < keySize){
-		r = rand() % (MODPRIME*MODPRIME);
+		r = rand() % int(MODPRIME/1.05);
 		// Find r in keys
 		for(idx=0; idx < cnt; idx++){
 			if(r == keys[idx]){
