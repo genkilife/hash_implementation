@@ -29,13 +29,6 @@ int main(){
 		if(chPtr->insert(keys[idx], keys[idx]) != SUCCESS){
 			assert(false);
 		}
-		if(chPtr->search(keys[idx]) != SUCCESS){
-			cout<<"bug1 "<<idx<<endl;
-			assert(false);
-		}
-		if(chPtr->search(keys[0]) != SUCCESS){
-			cout<<"bug3 "<<0<<endl;
-		}
 	}
 	cout<<"Finish chained hash insertion "<<keySize <<" elements"<<endl;
 
@@ -49,9 +42,6 @@ int main(){
 	
 	// Test deleteion
 	for(unsigned int idx=0; idx < keySize; idx++){
-		if(chPtr->search(keys[idx]) != SUCCESS){
-			assert(false);
-		}
 		if(chPtr->delkey(shuffledKeys[idx]) != SUCCESS){
 			assert(false);
 		}
