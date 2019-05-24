@@ -28,7 +28,7 @@ def dump_performance(filename):
 		doubleXasis = [float(x[0])/keySize for x in data[offset:]]
 		doubleYasis = [x[1] for x in data[offset:]]
 	
-	plt.ylabel('Time per 200 operation(ms)')
+	plt.ylabel('Time per 300 operation(ms)')
 	plt.xlabel('loading factor')
 	plt.plot(linearXasis, linearYasis, '-', color='red')
 	plt.plot(chainedXasis, chainedYasis, '-', color='green')
