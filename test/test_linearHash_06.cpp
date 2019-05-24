@@ -45,6 +45,7 @@ int main(){
 		if((idx % SAMPLE_PERIOD) == 0){
 			auto elapsed = chrono::high_resolution_clock::now() - start;
 			msecInsert[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
+			start += elapsed;
 		}
 	}
 	/*
@@ -53,6 +54,7 @@ int main(){
 	fstream fs;
 	fs.open("result/linearHash_uniform_insert_timestamp.txt", fstream::out);
 	for(unsigned int idx=0; idx < keySize/SAMPLE_PERIOD; idx++){
+		cout << idx*SAMPLE_PERIOD << " " << msecInsert[idx] << endl;
 		fs << idx*SAMPLE_PERIOD << " " << msecInsert[idx] << endl;
 	}
 	fs.close();
@@ -78,6 +80,7 @@ int main(){
 		if((idx % SAMPLE_PERIOD) == 0){
 			auto elapsed = chrono::high_resolution_clock::now() - start;
 			msecDelete[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
+			start += elapsed;
 		}
 	}
 	cout<<"Finish linear hash deletion "<<keySize <<" elements"<<endl;
@@ -88,7 +91,7 @@ int main(){
 	*/
 	fs.open("result/linearHash_uniform_delete_timestamp.txt", fstream::out);
 	for(unsigned int idx=0; idx < keySize/SAMPLE_PERIOD; idx++){
-		fs << (keySize - idx*SAMPLE_PERIOD) << " " << msecDelete[keySize/SAMPLE_PERIOD - 1] - msecDelete[idx] << endl;
+		fs << (keySize - idx*SAMPLE_PERIOD) << " " << msecDelete[idx] << endl;
 	}
 	fs.close();
 
